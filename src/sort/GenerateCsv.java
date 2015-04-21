@@ -1,5 +1,6 @@
 package sort;
 
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
  
@@ -18,6 +19,10 @@ public class GenerateCsv
  
    public void generateCsvFile()
    {
+	   File file = new File(file_name);
+	   if(file.exists()){
+		   file.delete();
+	   }
 	try
 	{
 	    FileWriter writer = new FileWriter(file_name);
