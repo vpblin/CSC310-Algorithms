@@ -13,23 +13,22 @@ public class Main {
 		graph.addVertex('F');
 		graph.addVertex('G');
 		graph.addVertex('H');
+		graph.addVertex('X');
+		graph.addVertex('Z');
 
-		graph.addEdge(0, 1, 2);
-		graph.addEdge(1, 2, 5);
-		graph.addEdge(1, 4, 4);
-		graph.addEdge(4, 2, 2);
-		graph.addEdge(2, 4, 2);
-
-		graph.addEdge(1, 6, 3);
+		graph.addEdge(0, 1, 1);
+		graph.addEdge(0, 3, 2);
+		graph.addEdge(1, 2, 2);
+		graph.addEdge(2, 3, 4);
 		graph.addEdge(3, 4, 2);
-		graph.addEdge(5, 3, 4);
-		graph.addEdge(5, 6, 1);
-		graph.addEdge(3, 6, 2);
+		graph.addEdge(3, 5, 2);
+		graph.addEdge(4, 5, 5);
+		graph.addEdge(5, 6, 4);
+		graph.addEdge(5, 7, 5);
 		graph.addEdge(6, 7, 1);
-		graph.addEdge(2, 7, 4);
-		graph.addEdge(4, 7, 3);
-		graph.addEdge(0, 5, 3);
 
+		
+		
 		graph.avadakedavra();
 	}
 }
