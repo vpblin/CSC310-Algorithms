@@ -14,8 +14,8 @@ public class Graph implements Iterable{
 	private int V = 0;
 	private LinkedList<Integer> [] list; 
 	private int totalVertex;
-	
-	
+	private int [][] weight = new int[100][100];
+	private String[] edgesweights = new String[10000];
 	
 	public Graph(String filename) throws FileNotFoundException{
 		
@@ -59,8 +59,39 @@ public class Graph implements Iterable{
 
 	}
 
-
+	public void printGraphByWeight(){
+		int current_weight = 1;
+		
+		while(current_weight < 200){
+			for(int i = 0; i < 100; i ++){
+				for(int j = 0; j < 100; j++){
+					if(weight[i][j] == current_weight){
+						System.out.println("Connection between " + i + " " + j + " is : " + weight[i][j]);
+						GenerateGraphByWeight(i,"", current_weight);
+					}
+				}
+			}
+			current_weight ++;
+		}
+	}
 	
+	public void GenerateGraphByWeight(int a, String edges, int current_weight){
+		
+		while(current_weight < 200){
+			for(int i = a + 1; i < 100; i ++){
+				for(int j = 0; j < 100; j++){
+					if(weight[i][j] == current_weight){
+						System.out.println("Connection between " + i + " " + j + " is : " + weight[i][j]);
+						GenerateGraphByWeight(i,"", current_weight);
+					}
+				}
+			}
+		}
+	}
+
+	public int getWeightBetween(int a, int b){
+		return this.weight[a][b];
+	}
 	public Graph(int V) throws Exception{
 		if(V < 1){
 			throw new Exception("Cannot be less than 1");
@@ -104,7 +135,8 @@ public class Graph implements Iterable{
 			
 			
 			for(int a : list[i]){
-				System.out.print(" " + a + " ");
+				System.out.print(" " + a + " (" + weight[i][a]+ ")");
+				
 			}
 
 			System.out.println("\t\t Size " + list[i].size());
@@ -143,8 +175,13 @@ public class Graph implements Iterable{
 		list[Vert].add(Connect);
 		totalVertex++;
 	}
-	
-	
+	public void addEdge(int Vert, int Connect, int Weight){
+		list[Vert].add(Connect);
+		weight[Vert][Connect] = Weight;
+		
+		totalVertex++;
+	}
+
 	public static Graph ReadGraph(String filename) throws Exception{
 		
 		File input = new File(filename);

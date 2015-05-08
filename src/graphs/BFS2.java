@@ -40,7 +40,7 @@ public class BFS2 {
 		  while (!q.isEmpty()) {
 
 		   // #:4 Dequeue n
-		   Node n = q.poll();
+		   Node n = (Node) q.poll();
 		   // visit this node
 		   n.visited = true;
 
@@ -49,7 +49,7 @@ public class BFS2 {
 		    return n;
 
 		   // #5: foreach vertices v of n
-		   for (Node v : n.vertices) {
+		   for (Node v : this.vertices) {
 		    // #6: if v is visited, continue
 		    if (v.visited)
 		     continue;
